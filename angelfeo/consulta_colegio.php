@@ -9,7 +9,7 @@
 <body>
 <center>
 <?php
-$con=mysqli_connect("localhost","root","","colegio");
+$con=mysqli_connect("sql303.infinityfree.com","if0_12345678","AbCd12Ef","if0_12345678_colegio");
 $resultado=mysqli_query($con,"select * from alumnos");
 if($resultado===FALSE){
     echo"fallo";
@@ -49,4 +49,5 @@ mysqli_close($con);
 ?>
 </center>
 </body>
+
 </html>
