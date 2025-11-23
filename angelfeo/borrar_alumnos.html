@@ -1,0 +1,20 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css.css">
+<meta charset="utf-8"/>
+<style type="text/css"></style>
+</head>
+<body>
+<center>
+<h1>Borrar datos</h1>
+<form action="borrar_alumnos.php" method="post">
+<table>
+<tr><td>Matricula:</td>
+<td><input type="tex" name="id_atricula"></td>
+</tr>
+
+</table>
+<input type="submit" value=" Borrar "/>
+</from>
+</body>
+</html>
