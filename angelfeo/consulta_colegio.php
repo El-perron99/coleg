@@ -1,35 +1,45 @@
-<meta charset="8">
+<!DOCTYPE html>
 <html>
 <head>
-<title>Consulta Alumnos</title>
-<link rel="stylesheet" type="text/css" href="CSS.css">
-<meta charset="utf-8"/>
-<style type="text/css"></style>
+    <meta charset="utf-8">
+    <title>Consulta Alumnos</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
 <center>
+
 <?php
-$con=mysqli_connect("sql303.infinityfree.com","if0_12345678","AbCd12Ef","if0_12345678_colegio");
-$resultado=mysqli_query($con,"select * from alumnos");
-if($resultado===FALSE){
-    echo"fallo";
+// Conexión
+$con = mysqli_connect("localhost", "root", "", "colegio");
+
+if (!$con) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+
+$resultado = mysqli_query($con, "SELECT * FROM alumnos");
+
+if ($resultado === FALSE) {
+    echo "Error en la consulta.";
     die(mysqli_error($con));
 }
-echo"<center><font face='Arial'>";
-echo"<a href='consulta_colegio.php'>Actualizar tabla</a>";
+
+echo "<center><font face='Arial'>";
+echo "<a href='consulta_colegio.php'>Actualizar tabla</a>";
 echo "<h1>Consulta de la tabla alumnos</h1>";
+
 echo "<table border='1'>
 <tr>
-<th>Matricula</th>
-<th>especialidad</th>
-<th>nombre</th>
+<th>Matrícula</th>
+<th>Especialidad</th>
+<th>Nombre</th>
 <th>Apellidos</th>
-<th>fehcadenacimiento</th>
-<th>direccion</th>
-<th>telefono</th>
+<th>Fecha de nacimiento</th>
+<th>Dirección</th>
+<th>Teléfono</th>
 </tr>";
 
-while($row = mysqli_fetch_assoc($resultado)){
+// Mostrar registros
+while ($row = mysqli_fetch_assoc($resultado)) {
     echo "<tr>";
     echo "<td align='center'>" . $row['id_atricula'] . "</td>";
     echo "<td>" . $row['especialidad'] . "</td>";
@@ -42,12 +52,13 @@ while($row = mysqli_fetch_assoc($resultado)){
 }
 
 echo "</table>";
-$registros=mysqli_num_rows($resultado);
-echo "<br>registros: ".$registros;
+
+$registros = mysqli_num_rows($resultado);
+echo "<br>Registros encontrados: " . $registros;
 
 mysqli_close($con);
 ?>
+
 </center>
 </body>
-
 </html>
